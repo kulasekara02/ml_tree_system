@@ -1,0 +1,64 @@
+# ML Tree System Configuration
+# ============================
+
+# Random seed for reproducibility
+random_seed: 42
+
+# Paths
+paths:
+  data_dir: "data/raw"
+  models_dir: "models"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+
+# Data settings
+data:
+  test_size: 0.2
+  validation_size: 0.2
+  dataset_name: "breast_cancer"  # Options: breast_cancer, iris, wine
+
+# Preprocessing
+preprocessing:
+  scaler: "standard"  # Options: standard, minmax, robust
+  handle_missing: "median"  # Options: mean, median, drop
+
+# Cross-validation
+cross_validation:
+  n_folds: 5
+  shuffle: true
+
+# Decision Tree hyperparameters for tuning
+decision_tree:
+  param_grid:
+    max_depth: [3, 5, 7, 10, null]
+    min_samples_split: [2, 5, 10]
+    min_samples_leaf: [1, 2, 4]
+    criterion: ["gini", "entropy"]
+
+# Random Forest hyperparameters for tuning
+random_forest:
+  param_grid:
+    n_estimators: [50, 100, 200]
+    max_depth: [5, 10, 15, null]
+    min_samples_split: [2, 5, 10]
+    min_samples_leaf: [1, 2, 4]
+    max_features: ["sqrt", "log2"]
+
+# Hyperparameter search settings
+tuning:
+  search_type: "random"  # Options: grid, random
+  n_iter: 50  # For random search
+  scoring: "f1"  # Optimization metric
+  n_jobs: -1  # Use all cores
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/ml_system.log"
+
+# API settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
