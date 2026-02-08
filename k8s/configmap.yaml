@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ml-tree-config
+  namespace: ml-system
+data:
+  config.yaml: |
+    model:
+      type: random_forest
+      n_estimators: 100
+      max_depth: 10
+      random_state: 42
+    
+    data:
+      train_size: 0.8
+      test_size: 0.2
+      validation_size: 0.1
+    
+    api:
+      host: 0.0.0.0
+      port: 8000
+      workers: 4
+    
+    logging:
+      level: INFO
+      format: json
