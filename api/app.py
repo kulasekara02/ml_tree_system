@@ -198,28 +198,9 @@ async def root():
     }
 
 
-@app.get("/health", tags=["General"])
-async def health_check():
-    """Health check endpoint for Kubernetes liveness/readiness probes."""
-    models_loaded = len(models) > 0
-    preprocessor_loaded = preprocessor is not None
-    
-    status_code = status.HTTP_200_OK if models_loaded else status.HTTP_503_SERVICE_UNAVAILABLE
-    
-    return JSONResponse(
-        status_code=status_code,
-        content={
-            "status": "healthy" if models_loaded else "unhealthy",
-            "models_loaded": list(models.keys()),
-            "preprocessor_loaded": preprocessor_loaded,
-            "timestamp": pd.Timestamp.now().isoformat()
-        }
-    )
-
-
 @app.get("/health", response_model=HealthResponse, tags=["General"])
 async def health_check():
-    """Check API health and loaded models."""
+    """Health check endpoint."""
     return HealthResponse(
         status="healthy" if models else "no models loaded",
         models_loaded=list(models.keys()),
