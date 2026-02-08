@@ -1,5 +1,7 @@
 # ML Tree System
 
+[![CI/CD Pipeline](https://github.com/kulasekara02/ml_tree_system/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/kulasekara02/ml_tree_system/actions/workflows/ci-cd.yml)
+
 End-to-end Machine Learning system using Decision Tree and Random Forest classifiers.
 
 ## Overview
