@@ -56,3 +56,9 @@ Thumbs.db
 # Reports (optional - uncomment if you want to keep figures out)
 # reports/figures/*.png
 # reports/figures/*.jpg
+
+# Test Coverage
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
